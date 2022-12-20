@@ -4,35 +4,223 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/54a62619f0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
     <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: rgb(254, 219, 170);
+        color: rgb(5, 13, 15);
+        font-family: "Syne", sans-serif;
+        font-size: 16px;
+        min-height: 100vh;
+        /* overflow: none; */
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      .navbar {
+        background: rgb(15, 37, 45);
+        color: #fff;
+        height: 100px;
+      }
+
+      .logo img {
+        width: 100px;
+      }
+
+      .nav {
+        display: flex;
+        list-style-type: none;
+      }
+
+      .nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+
+      .navbar ul {
+        display: flex;
+      }
+
+      .navbar ul li {
+        margin-left: 20px;
+      }
+
+      /*  */
+      .search .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 100px;
+        margin-bottom: 186px;
+      }
+
+      /* Add some styling for the search form */
+      form {
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+      input[type="text"] {
+        width: 90%;
+        height: 35px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 30px 10px;
+        box-sizing: border-box;
+        background-color: rgb(15, 37, 45);
+        color: #fff;
+        margin-right: 5px;
+      }
+      .send {
+        width: 10%;
+        height: 35px;
+        font-size: 18px;
+        background-color: rgb(254, 219, 170);
+        color: rgb(15, 37, 45);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .response {
+        /* width: 100%; */
+        /* height: 35px; */
+        font-size: 18px;
+        border: 20px solid #fff;
+        border-radius: 15px;
+        margin-top: 20px;
+        padding: 30px 10px;
+        box-sizing: border-box;
+        background-color: rgb(15, 37, 45);
+        color: #fff;
+        /* visibility: hidden; */
+      }
+      .load {
+        color: #fff;
+        font-size: 48px;
+        font-weight: bold;
+        visibility: hidden;
+      }
+
+      .hidden {
+        display: none;
+      }
+      .hidden.reveal {
+        display: block;
+      }
+
+      .footer {
+        background: rgb(15, 37, 45);
+        color: #fff;
+        /* position: absolute;
+  bottom: 0; */
+      }
+
+      .footer .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* background: rgb(15, 37, 45); */
+      }
+
+      .text {
+        flex: 1;
+        color: #fff;
+        border-radius: 10px;
+        margin: 20px 10px;
+        padding: 15px 20px;
+      }
+
+      .footer .logo {
+        margin-top: 20px;
+        padding-top: 15px;
+      }
+
+      .footer li {
+        list-style-type: none;
+      }
+
+      @media (max-width: 768px) {
+        .section .container {
+          flex-direction: column;
+          padding-top: 20px;
+          text-align: center;
+        }
+        .footer .container {
+          display: block;
+          /* flex-direction: column; */
+          text-align: center;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="navbar">
       <div class="container">
         <div class="logo">
-          <img src="./Diamond-triple_D-(peach).png" alt="triple-D" />
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/62264d40f0779c075cdb1c25/98178dce-6636-4ce7-9382-71933a99f575/Diamond-triple_D-%28peach%29.png?format=1500w"
+            alt="triple-D"
+          />
         </div>
-        <ul class="nav">
-          <li><a href="#">Work</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
       </div>
     </div>
 
     <section class="search">
       <div class="container">
-        <form>
-          <input type="text" placeholder="Search..." />
-          <!-- <input type="submit" value="Go" /> -->
+        <form action="/" method="post">
+          <input
+            type="text"
+            placeholder="Search..."
+            name="Search"
+            id="Search"
+          />
+
+          <input type="hidden" name="form1" value="form1" id="form1" />
+
+          <input type="submit" value="Send" class="send reveal" />
         </form>
+        <br />
+        <label for="">Result</label>
+        <div class="response hidden reveal">{{searchIdeas|safe}}</div>
+        <div class="load">Loading....</div>
       </div>
     </section>
 
-    <footer class="footer">
+    <div class="footer">
       <div class="container">
         <div class="text">
           <h2>Diamond</h2>
@@ -65,15 +253,47 @@
         </div>
 
         <div class="logo">
-          <img src="./Diamond-triple_D-(peach).png" alt="triple-D" />
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/62264d40f0779c075cdb1c25/98178dce-6636-4ce7-9382-71933a99f575/Diamond-triple_D-%28peach%29.png?format=1500w"
+            alt="triple-D"
+          />
         </div>
       </div>
-    </footer>
+    </div>
 
     <script>
-      const form = document.querySelector("input");
+      const hidden = document.querySelector(".hidden");
+      const reveal = document.querySelector(".reveal");
+      const response = document.querySelector(".response");
+      const send = document.querySelector(".send");
+      const load = document.querySelector(".load");
+      // const less = document.querySelector("span");
 
-      form.addEventListener("keypress");
+      function moreItems() {
+        if (hidden.classList.contains("reveal")) {
+          hidden.classList.remove("reveal");
+        } else {
+          hidden.classList.add("reveal");
+        }
+      }
+      reveal.addEventListener("click", moreItems);
+
+      // let array = ["Loading", "Cooking Up", "Thinking"];
+
+      // function changeLoad() {
+      //   if (i < array.length - 1) {
+      //     i++;
+      //   } else {
+      //     i = 0;
+      //   }
+      //   load.textContent = `${array[i]}...`;
+      // }
+      // changeLoad();
+      send.addEventListener("click", () => {
+        // changeLoad();
+
+        load.style.visibility = "visible";
+      });
     </script>
   </body>
 </html>
