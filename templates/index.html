@@ -46,7 +46,7 @@
       }
 
       .logo img {
-        width: 100px;
+        width: 50px;
       }
 
       .nav {
@@ -92,12 +92,12 @@
         justify-content: center;
         width: 100%;
         margin: 0 auto;
-        padding: 20px;
+        padding: 5px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         border-radius: 10px;
       }
       input[type="text"] {
-        width: 90%;
+        width: 100%;
         height: 35px;
         font-size: 18px;
         border: 1px solid #ccc;
@@ -106,9 +106,9 @@
         box-sizing: border-box;
         background-color: rgb(15, 37, 45);
         color: #fff;
-        margin-right: 5px;
+        /* margin-right: 5px; */
       }
-      .send {
+      /* .send {
         width: 10%;
         height: 35px;
         font-size: 18px;
@@ -118,15 +118,15 @@
         border-radius: 4px;
         cursor: pointer;
         font-weight: bold;
-      }
+      } */
 
       .response {
         /* width: 100%; */
         /* height: 35px; */
         font-size: 18px;
-        border: 20px solid #fff;
+        border: 5px solid #fff;
         border-radius: 15px;
-        margin-top: 20px;
+        margin-bottom: 5px;
         padding: 30px 10px;
         box-sizing: border-box;
         background-color: rgb(15, 37, 45);
@@ -206,6 +206,8 @@
 
     <section class="search">
       <div class="container">
+        <div class="response hidden reveal">{{searchIdeas|safe}}</div>
+
         <form action="/" method="post">
           <input
             type="text"
@@ -216,11 +218,10 @@
 
           <input type="hidden" name="form1" value="form1" id="form1" />
 
-          <input type="submit" value="Send" class="send reveal" />
+          <!-- <input type="submit" value="Send" class="send reveal" /> -->
         </form>
         <br />
-        <label for="">Result</label>
-        <div class="response hidden reveal">{{searchIdeas|safe}}</div>
+        <!-- <label for="">Result</label> -->
         <div class="load">Loading....</div>
       </div>
     </section>
@@ -273,6 +274,7 @@
       const send = document.querySelector(".send");
       const load = document.querySelector(".load");
       // const less = document.querySelector("span");
+      const form = document.querySelector("form");
 
       function moreItems() {
         if (hidden.classList.contains("reveal")) {
@@ -281,7 +283,12 @@
           hidden.classList.add("reveal");
         }
       }
-      reveal.addEventListener("click", moreItems);
+      reveal.addEventListener("load", moreItems);
+
+      //   form.addEventListener("submit", () => {
+      //     hidden.classList.add("reveal");
+      //     hidden.style.display = "block";
+      //   });
 
       // let array = ["Loading", "Cooking Up", "Thinking"];
 
@@ -294,11 +301,11 @@
       //   load.textContent = `${array[i]}...`;
       // }
       // changeLoad();
-      send.addEventListener("click", () => {
-        // changeLoad();
+      //   send.addEventListener("click", () => {
+      //     // changeLoad();
 
-        load.style.visibility = "visible";
-      });
+      //     load.style.visibility = "visible";
+      //   });
     </script>
   </body>
 </html>
