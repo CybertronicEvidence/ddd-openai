@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import config
 import search
+import json
 
 
 def page_not_found(e):
@@ -18,13 +19,13 @@ def index():
 
     if request.method == 'POST':
         if 'form1' in request.form:
-            prompt = request.form['Search']
+            prompt = request.form['textInput']
             searchT = search.generateIdeas(prompt)
             searchIdeas = searchT.replace('\n', '<br>')
-
+            
 
     return render_template('index.html', **locals())
-
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='8888', debug=True)

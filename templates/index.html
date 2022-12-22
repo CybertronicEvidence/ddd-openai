@@ -10,6 +10,10 @@
     ></script> -->
     <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
       rel="shortcut icon"
       type="image/x-icon"
       href="{{ url_for('static', filename='images/Diamond-triple_D-(peach).png') }}"
@@ -23,13 +27,15 @@
         margin: 0;
         padding: 0;
       }
-
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         background: rgb(254, 219, 170);
         color: rgb(5, 13, 15);
         font-family: "Syne", sans-serif;
         font-size: 16px;
-        min-height: 100vh;
+        /* min-height: 100vh; */
         /* overflow: none; */
       }
 
@@ -80,12 +86,12 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        margin-top: 100px;
+        /* margin-top: 100px; */
         margin-bottom: 186px;
       }
 
       /* Add some styling for the search form */
-      form {
+      /* form {
         background: #fff;
         display: flex;
         align-items: center;
@@ -106,23 +112,150 @@
         box-sizing: border-box;
         background-color: rgb(15, 37, 45);
         color: #fff;
-        /* margin-right: 5px; */
+        margin-right: 5px;
+      } */
+      .full-chat-block {
+        width: 1080px;
+        background: rgb(15, 37, 45);
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 5px;
+        overflow: auto;
+        scrollbar-width: none;
+        height: max-content;
+        transition: max-height 0.2s ease-out;
+      }
+      .outer-container {
+        min-height: 250px;
+        bottom: 0%;
+        position: relative;
+      }
+
+      .chat-container {
+        max-height: 500px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        scroll-behavior: smooth;
+        hyphens: auto;
+      }
+
+      .chat-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .chat-bar-input-block {
+        display: flex;
+        float: left;
+        box-sizing: border-box;
+        justify-content: space-evenly;
+        width: 100%;
+        align-items: center;
+        background-color: rgb(235, 235, 235);
+        /* border-radius: 10px 10px 0px 0px; */
+        padding: 10px 0px 10px 10px;
+      }
+
+      .chat-bar-icons {
+        display: flex;
+        justify-content: space-around;
+        box-sizing: border-box;
+        width: 5%;
+        float: left;
+        font-size: 20px;
+      }
+
+      #chat-icon:hover {
+        opacity: 0.7;
+      }
+
+      /* Chat bubbles */
+
+      #userInput {
+        width: 100%;
+      }
+
+      .input-box {
+        float: left;
+        border: none;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 16px;
+        color: #000;
+        background-color: white;
+        outline: none;
+      }
+
+      .userText {
+        color: white;
+        font-family: Helvetica;
+        font-size: 16px;
+        font-weight: normal;
+        text-align: right;
+        clear: both;
+      }
+
+      .userText span {
+        line-height: 1.5em;
+        display: inline-block;
+        background: #5ca6fa;
+        padding: 10px;
+        border-radius: 8px;
+        border-bottom-right-radius: 2px;
+        max-width: 80%;
+        margin-right: 10px;
+        animation: floatup 0.5s forwards;
+        margin-bottom: 5px;
+      }
+
+      .botText {
+        color: #000;
+        font-family: Helvetica;
+        font-weight: normal;
+        font-size: 16px;
+        text-align: left;
+      }
+
+      .botText span {
+        line-height: 1.5em;
+        display: inline-block;
+        background: #e0e0e0;
+        padding: 10px;
+        border-radius: 8px;
+        border-bottom-left-radius: 2px;
+        max-width: 80%;
+        margin-left: 10px;
+        animation: floatup 0.5s forwards;
+        margin-bottom: 5px;
+      }
+      @keyframes floatup {
+        from {
+          transform: translateY(14px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0px);
+          opacity: 1;
+        }
       }
       /* .send {
-        width: 10%;
-        height: 35px;
-        font-size: 18px;
-        background-color: rgb(254, 219, 170);
-        color: rgb(15, 37, 45);
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-      } */
+            width: 10%;
+            height: 35px;
+            font-size: 18px;
+            background-color: rgb(254, 219, 170);
+            color: rgb(15, 37, 45);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+          } */
 
-      .response {
-        /* width: 100%; */
-        /* height: 35px; */
+      /* .response {
+        width: 100%; */
+      /* height: 35px;
         font-size: 18px;
         border: 5px solid #fff;
         border-radius: 15px;
@@ -131,7 +264,7 @@
         box-sizing: border-box;
         background-color: rgb(15, 37, 45);
         color: #fff;
-        /* visibility: hidden; */
+        visibility: hidden;
       }
       .load {
         color: #fff;
@@ -145,13 +278,13 @@
       }
       .hidden.reveal {
         display: block;
-      }
+      } */
 
       .footer {
         background: rgb(15, 37, 45);
         color: #fff;
         /* position: absolute;
-  bottom: 0; */
+      bottom: 0; */
       }
 
       .footer .container {
@@ -178,7 +311,7 @@
         list-style-type: none;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1080px) {
         .section .container {
           flex-direction: column;
           padding-top: 20px;
@@ -188,6 +321,12 @@
           display: block;
           /* flex-direction: column; */
           text-align: center;
+        }
+
+        .full-chat-block {
+          width: 100%;
+          /* padding: 10px; */
+          /* border-radius: 0px; */
         }
       }
     </style>
@@ -208,7 +347,7 @@
       <div class="container">
         <div class="response hidden reveal">{{searchIdeas|safe}}</div>
 
-        <form action="/" method="post">
+        <!-- <form action="/" method="post">
           <input
             type="text"
             placeholder="Search..."
@@ -216,14 +355,58 @@
             id="Search"
           />
 
-          <input type="hidden" name="form1" value="form1" id="form1" />
+          <input type="hidden" name="form1" value="form1" id="form1" /> -->
 
-          <!-- <input type="submit" value="Send" class="send reveal" /> -->
-        </form>
-        <br />
+        <!-- <input type="submit" value="Send" class="send reveal" /> -->
+        <!-- </form>
+        <br /> -->
         <!-- <label for="">Result</label> -->
-        <div class="load">Loading....</div>
+        <!-- <div class="load">Loading....</div> -->
       </div>
+
+      <div class="full-chat-block">
+        <!-- Message Container -->
+        <div class="outer-container">
+          <div class="chat-container">
+            <!-- Messages -->
+            <div id="chatbox">
+              <h5 id="chat-timestamp"></h5>
+              <p id="botStarterMessage" class="botText">
+                <!-- <span>Loading...</span> -->
+              </p>
+            </div>
+
+            <!-- User input box -->
+            <div class="chat-bar-input-block">
+              <div id="userInput">
+                <input
+                  id="textInput"
+                  class="input-box"
+                  type="text"
+                  name="textInput"
+                  placeholder="Tap 'Enter' to send a message"
+                />
+                <input type="hidden" name="form1" value="form1" id="form1" />
+                <p></p>
+              </div>
+
+              <div class="chat-bar-icons">
+                <i
+                  id="chat-icon"
+                  style="color: #333"
+                  class="fa fa-fw fa-send"
+                  onclick="sendButton()"
+                ></i>
+              </div>
+            </div>
+
+            <div id="chat-bar-bottom">
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="response" style="display: none">{{searchIdeas|safe}}</div> -->
     </section>
 
     <div class="footer">
@@ -267,23 +450,25 @@
       </div>
     </div>
 
-    <script>
-      const hidden = document.querySelector(".hidden");
-      const reveal = document.querySelector(".reveal");
-      const response = document.querySelector(".response");
-      const send = document.querySelector(".send");
-      const load = document.querySelector(".load");
-      // const less = document.querySelector("span");
-      const form = document.querySelector("form");
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-      function moreItems() {
-        if (hidden.classList.contains("reveal")) {
-          hidden.classList.remove("reveal");
-        } else {
-          hidden.classList.add("reveal");
-        }
-      }
-      reveal.addEventListener("load", moreItems);
+    <script>
+      // const hidden = document.querySelector(".hidden");
+      // const reveal = document.querySelector(".reveal");
+      const response = document.querySelector(".response");
+      // const send = document.querySelector(".send");
+      // const load = document.querySelector(".load");
+      // // const less = document.querySelector("span");
+      // const form = document.querySelector("form");
+
+      // function moreItems() {
+      //   if (hidden.classList.contains("reveal")) {
+      //     hidden.classList.remove("reveal");
+      //   } else {
+      //     hidden.classList.add("reveal");
+      //   }
+      // }
+      // reveal.addEventListener("load", moreItems);
 
       //   form.addEventListener("submit", () => {
       //     hidden.classList.add("reveal");
@@ -306,6 +491,121 @@
 
       //     load.style.visibility = "visible";
       //   });
+      function getTime() {
+        let today = new Date();
+        hours = today.getHours();
+        minutes = today.getMinutes();
+
+        if (hours < 10) {
+          hours = "0" + hours;
+        }
+
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+
+        let time = hours + ":" + minutes;
+        return time;
+      }
+      // Gets the first message
+      // function firstBotMessage() {
+      //   let firstMessage = "How's it going?";
+      //   document.getElementById("botStarterMessage").innerHTML =
+      //     '<p class="botText"><span>' + firstMessage + "</span></p>";
+
+      //   let time = getTime();
+
+      //   $("#chat-timestamp").append(time);
+      //   document.getElementById("userInput").scrollIntoView(false);
+      // }
+
+      // firstBotMessage();
+
+      // Retrieves the response
+      // function change_response (data) {
+      //   console.log(data)
+      // }
+      // change_response({{searchIdeas|safe}})
+
+      function getHardResponse(userText) {
+        let botResponse = getBotResponse(userText);
+        let botHtml = '<p class="botText"><span>' + botResponse + "</span></p>";
+        $("#chatbox").append(botHtml);
+
+        document.getElementById("chat-bar-bottom").scrollIntoView(true);
+      }
+
+      //Gets the text text from the input box and processes it
+      function getResponse() {
+        let userText = $("#textInput").val();
+
+        if (userText == "") {
+          userText = "I love Code Palace!";
+        }
+
+        let userHtml = '<p class="userText"><span>' + userText + "</span></p>";
+
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+        document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+        setTimeout(() => {
+          getHardResponse(userText);
+        }, 1000);
+      }
+
+      // Handles sending text via button clicks
+      function buttonSendText(sampleText) {
+        let userHtml =
+          '<p class="userText"><span>' + sampleText + "</span></p>";
+
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+        document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+        //Uncomment this if you want the bot to respond to this buttonSendText event
+        // setTimeout(() => {
+        //     getHardResponse(sampleText);
+        // }, 1000)
+      }
+
+      function sendButton() {
+        getResponse();
+      }
+
+      function heartButton() {
+        buttonSendText("Heart clicked!");
+      }
+
+      // Press enter to send a message
+      $("#textInput").keypress(function (e) {
+        if (e.which == 13) {
+          getResponse();
+        }
+      });
+
+      function getBotResponse(input) {
+        // //rock paper scissors
+        // if (input == "rock") {
+        //   return "paper";
+        // } else if (input == "paper") {
+        //   return "scissors";
+        // } else if (input == "scissors") {
+        //   return "rock";
+        // }
+
+        // // Simple responses
+        // if (input == "hello") {
+        //   return "Hello there!";
+        // } else if (input == "goodbye") {
+        //   return "Talk to you later!";
+        // } else {
+        //   return "Try asking something else!";
+        // }
+        if (input) {
+          return response.innerText;
+        }
+      }
     </script>
   </body>
 </html>
